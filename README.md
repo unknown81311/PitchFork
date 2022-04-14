@@ -1,4 +1,5 @@
 # smch
+version 1.2
 
 workshop mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2581741736
 
