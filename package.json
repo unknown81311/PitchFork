@@ -1,0 +1,51 @@
+{
+  "name": "PitchFork-Installer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/unknown81311/PitchFork",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "build": {
+    "extraResources": [
+      {
+        "from": "node_modules/regedit/vbs",
+        "to": "regedit/vbs",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "appId": "com.installer.app",
+    "artifactName": "PitchFork-Installer.${ext}",
+    "productName": "PitchFork",
+    "win": {
+      "target": "portable"
+    },
+    "portable": {
+      "artifactName": "PitchFork-Installer.${ext}"
+    }
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^17.2.0",
+    "electron-packager": "^15.4.0"
+  },
+  "dependencies": {
+    "@node-steam/vdf": "^2.2.0",
+    "axios": "^0.27.1",
+    "child_process": "^1.0.2",
+    "node-fetch": "^2.6.1",
+    "registry-js": "^1.15.1",
+    "windows": "^0.1.0"
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  @font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+}
+  body>.background{
+    background-image: url(https://images.gamewatcherstatic.com/image/file/6/38/107526/scrap_mechanic_logo_2.JPG);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-size: cover;
+    filter: blur(35px);
+  }
+  
+main > div.options {
+  display: flex;
+  height: 300px;
+}
+main > div.options > div.option {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 10px;
+  justify-content: space-around;
+  width: calc(50% - 4px);
+  background:#ffffffa8;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+main > div.options > div.option:hover > .material-icons {
+  animation: zoom 50ms linear forwards;
+}
+
+p {
+  text-align: center;
+}
+main > div.options > div.option > .material-icons {
+  zoom: 2.5;
+  position: fixed;
+}
+a {
+  color: #0066ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+* {
+  font-family: "Barlow Condensed", sans-serif;
+}
+  </style>
+</head>
+
+<body>
+  <div class='background'></div>
+  <header>
+    <a href="https://discord.gg/9Zy86jrfpT">DISCORD</a>
+  </header>
+  <main>
+    <div class="options">
+      <div id='install' class="option">
+        <h1>install</h1>
+        <span class="material-icons md-48">
+          file_download
+        </span>
+        <p>Replaces the current code of the game with the mod client and creates a backup for uninstalling.</p>
+      </div>
+      <div id='uninstall' class="option">
+        <h1>uninstall</h1>
+        <span class="material-icons md-48">
+          delete_outline
+        </span>
+        <p>Tries to removes the mod client if detected and replaces it with the old vanilla code.</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById('install').addEventListener('click',()=>{const win=window.open('steam://openurl/https://steamcommunity.com/sharedfiles/filedetails/?id=2581741736');electron.ipcRenderer.sendSync("install");win.close()})
+document.getElementById('uninstall').addEventListener('click',()=>{electron.ipcRenderer.sendSync("uninstall")})
+</script>
+</body>
+</html>
